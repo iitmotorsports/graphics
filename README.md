@@ -4,7 +4,7 @@ The tools, templates, and guidelines when it comes to the team's graphic design
 
 ## Color
 
-The chosen color pallet and combinations
+The chosen color palette and combinations
 
 ## Logo
 
