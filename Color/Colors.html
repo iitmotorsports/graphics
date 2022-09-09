@@ -1,0 +1,171 @@
+<html>
+
+<head>
+    <title> Dashboard Colors </title>
+    <style type="text/css" media="all">
+
+        .background {
+            background-color: #121527;
+        }
+
+        .text-fore {
+            color: #bcbcbc;
+        }
+
+        .text-back {
+            color: #3a3d4f;
+        }
+
+        .red-0 {
+            background-color: #8e1d22;
+        }
+
+        .red-1 {
+            background-color: #ce1126;
+        }
+
+        .gray-0 {
+            background-color: #cfd5e4;
+        }
+
+        .gray-1 {
+            background-color: #999eac;
+        }
+
+        .gray-2 {
+            background-color: #727885;
+        }
+
+        .gray-3 {
+            background-color: #6f7377;
+        }
+
+        .gray-4 {
+            background-color: #373c48;
+        }
+
+        .dark-0 {
+            background-color: #231f20;
+        }
+
+        .dark-1 {
+            background-color: #070e1b;
+        }
+
+        .dark-2 {
+            background-color: #000816;
+        }
+
+        .accent-0 {
+            background-color: #ea0c01;
+        }
+
+        .accent-1 {
+            background-color: #fef301;
+        }
+
+        .accent-2 {
+            background-color: #0ba60a;
+        }
+
+        .accent-3 {
+            background-color: #006796;
+        }
+
+        .accent-4 {
+            background-color: #c800e2;
+        }
+
+        body {
+            margin: 2em;
+            width: fit-content;
+            text-align: center;
+            color: #cfd5e4;
+            font-family: "futura", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        hr {
+            margin: 2em 0;
+            border: 0;
+            height: 0;
+            color: #cfd5e4;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .swatch {
+            padding: 11px;
+            width: 80px;
+            height: 40px;
+            margin: 6px;
+            border-radius: 4px;
+            vertical-align: middle;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            color: white;
+            font-family: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+            font-size: 14px;
+        }
+
+        .title {
+            padding: 13px;
+            width: 80px;
+            color: #cfd5e4;
+            font-family: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+            box-sizing: border-box;
+        }
+
+        @for $i from 0 through 9 {
+            [class$="#{$i}"] {
+                &:before {
+                    content: "#{$i}";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    font-size: 10px;
+                    font-weight: 600;
+                    background: #272b33;
+                    padding: 2px;
+                    padding-right: 4px;
+                    color: #cfd5e4;
+                    border-bottom-right-radius: 4px;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body class="background">
+    <h1 class="text-fore"> Foreground Text - #bcbcbc</h1>
+    <h2 class="text-back"> Background Text - #3a3d4f</h2>
+
+    <h3 style="color: black;">Background - #121527</h3>
+
+    <div class="text-fore swatch title">IIT Reds</div>
+    <div class="text-fore swatch red-0">#8e1d22</div>
+    <div class="text-fore swatch red-1">#ce1126</div>
+
+    <div class="text-fore swatch title">Grays</div>
+    <div class="text-fore swatch gray-0">#cfd5e4</div>
+    <div class="text-fore swatch gray-1">#999eac</div>
+    <div class="text-fore swatch gray-2">#727885</div>
+    <div class="text-fore swatch gray-3">#6f7377</div>
+    <div class="text-fore swatch gray-4">#373c48</div>
+
+    <div class="text-fore swatch title">Darks</div>
+    <div class="text-fore swatch dark-0">#231f20</div>
+    <div class="text-fore swatch dark-1">#070e1b</div>
+    <div class="text-fore swatch dark-2">#000816</div>
+
+    <div class="text-fore swatch title">Accents</div>
+    <div class="text-fore swatch accent-0">#ea0c01</div>
+    <div class="text-fore swatch accent-1">#fef301</div>
+    <div class="text-fore swatch accent-2">#0ba60a</div>
+    <div class="text-fore swatch accent-3">#006796</div>
+    <div class="text-fore swatch accent-4">#c800e2</div>
+
+    <hr>
+</body>
+
+</html>
