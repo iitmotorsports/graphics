@@ -153,6 +153,9 @@ def gen_logo(parser: ET.ElementTree, selected: str, color_map: dict[str, Color],
         try:
             curr = re.findall(r"fill:#(.+?);", i.attrib["style"])[0]
             col = color_map[i.attrib["id"]].hex
+            if col == STD_COLORS[6].hex:
+                root.remove(i)
+                continue
             i.attrib["style"] = i.attrib["style"].replace(curr, col)
             if extra_text and i.attrib["id"] == "Subtext":
                 i.text = extra_text
@@ -195,7 +198,7 @@ def touch(pth: str) -> None:
         os.makedirs(pth)
 
 
-def gen_default(extra_text: str, prepath: str) -> None:
+def gen_default(extra_text: str, prepath: str) -> None: #FIXME: Transparent Red Gray not working??
     global OUTPUT
     org_out = OUTPUT
 
