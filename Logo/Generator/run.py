@@ -25,11 +25,11 @@ class Color:
 
 
 STD_COLORS = (
-    Color("red", "CE1126"),
-    Color("orange", "D97300"),
-    Color("gold", "E89E00"),
-    Color("gray", "6F7377"),
-    Color("black", "231F20"),
+    Color("red", "C8102E"),
+    Color("orange", "E57200"),
+    Color("gold", "F2A900"),
+    Color("gray", "73787B"),
+    Color("black", "2D2926"),
     Color("white", "FFFFFF"),
     Color("transparent", "00000000"),
 )
@@ -169,7 +169,7 @@ def gen_logo(parser: ET.ElementTree, selected: str, color_map: dict[str, Color],
     parser.write(out)
 
 
-def main():
+def run():
     selected: str = logo_select()
 
     extra_text: str = input("Extra Text? (Blank for none): ")
@@ -178,9 +178,6 @@ def main():
         selected += "_Stacked"
 
     parser = ET.parse(os.path.join(ORIGINAL_PATH, f"{selected}.svg"))
-
-    if not os.path.exists(OUTPUT):
-        os.mkdir(OUTPUT)
 
     if input_loop("Generate default schemes?", ('yes', 'no')) == 'yes':
         if input_loop("Transparent BGs?", ('yes', 'no')) == 'yes':
@@ -191,6 +188,41 @@ def main():
     else:
         color_map: dict[str, Color] = color_select()
         gen_logo(parser, selected, color_map, extra_text)
+
+
+def touch(pth: str) -> None:
+    if not os.path.exists(pth):
+        os.makedirs(pth)
+
+
+def gen_default(extra_text: str, prepath: str) -> None:
+    global OUTPUT
+    org_out = OUTPUT
+
+    for logo in LOGOS:
+        OUTPUT = os.path.join(org_out, prepath, logo)
+        touch(OUTPUT)
+        if extra_text:
+            logo += "_Stacked"
+        parser = ET.parse(os.path.join(ORIGINAL_PATH, f"{logo}.svg"))
+        for scheme in STD_SCHEME:
+            gen_logo(parser, logo, scheme, extra_text)
+
+    OUTPUT = org_out
+
+
+def main():
+    touch(OUTPUT)
+
+    if input_loop("Generate default schemes?", ('yes', 'no')) == 'yes':
+
+        extra_text: str = input("Extra Text? (Blank for none): ")
+        gen_default(extra_text, "Solid")
+        for scheme in STD_SCHEME:
+            scheme["BG"] = STD_COLORS[6]
+        gen_default(extra_text, "Transparent")
+    else:
+        run()
 
 
 main()
