@@ -28,7 +28,7 @@ STD_COLORS = (
     Color("red", "C8102E"),
     Color("orange", "E57200"),
     Color("gold", "F2A900"),
-    Color("gray", "73787B"),
+    Color("gray", "75787B"),
     Color("black", "2D2926"),
     Color("white", "FFFFFF"),
     Color("transparent", "00000000"),
