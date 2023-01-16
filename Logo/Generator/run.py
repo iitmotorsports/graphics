@@ -106,11 +106,9 @@ def input_loop(text: str, options: tuple[str], show: bool = True, error_msg=None
         txt = input(text).lower()
         sel = None
         for i in options:
+            if sel or not txt:
+                break
             if i.lower().startswith(txt):
-                if sel or not txt:
-                    if error_msg:
-                        print(error_msg)
-                    continue
                 sel = i
         if sel:
             return sel
@@ -136,7 +134,7 @@ def color_select() -> dict[str, Color]:
     color_map = STD_SCHEME[0]
     print("--[Color options]--\n", "\n".join(f"[{STD_COLORS.index(x)}] {str(x)}" for x in STD_COLORS), sep="")
     print("\nSelect color code: ")
-    options = (str(x) for x in range(0, len(STD_COLORS)))
+    options = list(str(x) for x in range(0, len(STD_COLORS)))
     for k in color_map:
         col = STD_COLORS[int(input_loop(f"{k}: ", options, False, "Select a number from the above colors where x in [x] is the number"))]
         color_map[k] = col
